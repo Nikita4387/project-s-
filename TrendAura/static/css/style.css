@@ -1,0 +1,428 @@
+/* ================== GLOBAL FIX ================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(150, 130, 200, 0.25);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Push content below navbar */
+body {
+    padding-top: 110px; /* ensures content starts below fixed navbar */
+}
+
+/* Remove Bootstrap white background */
+.container {
+    background-color: transparent !important;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+    padding: 10px 0;
+    background-color: rgba(230, 220, 245, 0.85);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 220px;       /* clear visible size */
+    max-height: 90px;   /* keeps it within navbar height */
+    object-fit: contain; /* proportional scaling */
+}
+
+/* Mobile responsiveness for logo */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 160px;
+        max-height: 70px;
+    }
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: 15px;
+    color: #000 !important;
+}
+
+.nav-link:hover {
+    color: #3b2f2f !important;
+}
+
+/* ================== HERO SECTION ================== */
+.hero {
+    min-height: 90vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("/static/images/bg.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-text {
+    color: #ffffff;
+    max-width: 800px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+/* ================== FEATURED SECTION ================== */
+.section-below-hero {
+    background-color: rgba(153, 140, 185, 0.25);
+    padding: 80px 0;
+}
+
+/* ================== CARDS ================== */
+.card {
+    background-color: rgba(236, 233, 242, 0.25) !important;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card-body {
+    background-color: transparent;
+}
+
+.card img {
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+/* ================== BUTTONS ================== */
+.btn-warning {
+    background-color: rgba(180, 160, 220, 0.85);
+    border-color: rgba(180, 160, 220, 0.85);
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: rgba(160, 140, 210, 0.95);
+    border-color: rgba(160, 140, 210, 0.95);
+}
+
+/* ================== FOOTER ================== */
+footer {
+    background-color: rgba(150, 130, 200, 0.25);
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+}
+/* ================== GLOBAL POLISH ================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    color: #4b2f8a;
+}
+
+/* ================== NAVBAR IMPROVEMENTS ================== */
+.navbar {
+    padding: 15px 20px;
+    border-bottom: 2px solid rgba(180,160,220,0.3);
+    font-size: 1.1rem;
+}
+
+.navbar .nav-link {
+    padding: 8px 12px;
+    font-weight: 600;
+    color: #1a1a1a !important;
+}
+
+.navbar .nav-link:hover {
+    color: #4b2f8a !important;
+    background-color: rgba(230,220,245,0.3);
+    border-radius: 6px;
+}
+
+.navbar .nav-link.welcome-text {
+    font-weight: 700;
+    cursor: default;
+}
+
+/* ================== HERO TEXT IMPROVEMENT ================== */
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+/* ================== CARDS ================== */
+.card {
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+}
+
+/* ================== BUTTONS ================== */
+.btn-warning {
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ================== TABLES (CART / CHECKOUT) ================== */
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    width: 100%;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+table th {
+    background-color: rgba(180,160,220,0.4);
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+table td {
+    background-color: rgba(240,240,250,0.7);
+    border-radius: 12px;
+}
+
+table tr td a.btn-danger {
+    padding: 4px 10px;
+    font-size: 0.9rem;
+}
+
+/* ================== FOOTER ================== */
+footer {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right, rgba(180,160,220,0.5), rgba(230,220,245,0.5));
+}
+
+/* ================== RESPONSIVE ADJUSTMENTS ================== */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .navbar {
+        font-size: 1rem;
+    }
+}
+.products-section {
+    background-color: rgba(255, 255, 255, 1); /* white */
+    padding: 40px 0;
+}
+/* ================== PRODUCT LISTING PAGES ================== */
+.product-page {
+    background-color: rgba(180, 160, 220, 0.85);
+    padding: 60px 0;
+    min-height: 100vh;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/*================================================================================================================================================ Changes made to add animations==================================================================================================================================================================================== */
+/*================================================================================================================================================ Changes made to add animations==================================================================================================================================================================================== */
+
+
+/* ================== GLOBAL FIX ================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(150, 130, 200, 0.25);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 1s ease-in-out; /* page fade-in */
+}
+
+/* Push content below navbar */
+body {
+    padding-top: 110px; /* ensures content starts below fixed navbar */
+}
+
+/* Remove Bootstrap white background */
+.container {
+    background-color: transparent !important;
+    animation: fadeInUp 1s ease-in-out; /* container fade-up */
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+    padding: 10px 0;
+    background-color: rgba(230, 220, 245, 0.85);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    animation: slideDown 0.8s ease-out; /* navbar slide down */
+}
+
+.logo-img {
+    width: 220px;
+    max-height: 90px;
+    object-fit: contain;
+}
+
+/* Mobile responsiveness for logo */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 160px;
+        max-height: 70px;
+    }
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: 15px;
+    color: #000 !important;
+    transition: color 0.3s ease; /* smooth hover color transition */
+}
+
+.nav-link:hover {
+    color: #3b2f2f !important;
+}
+
+/* ================== HERO SECTION ================== */
+.hero {
+    min-height: 90vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("/static/images/bg.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out; /* hero fade-in */
+}
+
+.hero-text {
+    color: #ffffff;
+    max-width: 800px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    animation: fadeInUp 1s ease-in-out 0.5s forwards; /* hero text fade up */
+    opacity: 0; /* start hidden for animation */
+}
+
+/* ================== FEATURED SECTION ================== */
+.section-below-hero {
+    background-color: rgba(150, 130, 200, 0.25);
+    padding: 80px 0;
+    animation: fadeIn 1s ease-in-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* ================== CARDS ================== */
+.card {
+    background-color: rgba(150, 130, 200, 0.25) !important;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.card-body {
+    background-color: transparent;
+}
+
+.card img {
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+/* ================== BUTTONS ================== */
+.btn-warning {
+    background-color: rgba(180, 160, 220, 0.85);
+    border-color: rgba(180, 160, 220, 0.85);
+    color: #000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: rgba(160, 140, 210, 0.95);
+    border-color: rgba(160, 140, 210, 0.95);
+    transform: scale(1.05);
+}
+
+/* ================== FOOTER ================== */
+footer {
+    background-color: rgba(150, 130, 200, 0.25);
+    color: #000;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeIn 1s ease-in-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* ================== ANIMATIONS ================== */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
