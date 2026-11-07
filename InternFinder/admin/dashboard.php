@@ -1,0 +1,7 @@
+<?php
+require_once __DIR__.'/../includes/functions.php';admin_only();$pageTitle='Admin dashboard';
+$counts=['students'=>$pdo->query("SELECT COUNT(*) FROM students")->fetchColumn(),'internships'=>$pdo->query("SELECT COUNT(*) FROM internships")->fetchColumn(),'open'=>$pdo->query("SELECT COUNT(*) FROM internships WHERE ".active_internship_sql())->fetchColumn(),'closed'=>$pdo->query("SELECT COUNT(*) FROM internships WHERE is_open=0 OR deadline<CURDATE()")->fetchColumn(),'applications'=>$pdo->query("SELECT COUNT(*) FROM applications")->fetchColumn(),'pending'=>$pdo->query("SELECT COUNT(*) FROM applications WHERE status='Pending'")->fetchColumn()];
+include __DIR__.'/../includes/header.php'; ?>
+<h1 class="page-title">Admin dashboard</h1><p class="text-muted">Welcome, <?= e($_SESSION['admin_name']) ?>. Manage opportunities and student applications.</p><div class="row g-3"><?php foreach($counts as $k=>$v): ?><div class="col-6 col-lg-4"><div class="stat-card"><i class="fa fa-chart-line"></i><strong><?= (int)$v ?></strong><span><?= e(ucfirst($k)) ?></span></div></div><?php endforeach; ?></div>
+<div class="d-flex flex-wrap gap-2 mt-4"><a class="btn btn-primary" href="add-internship.php"><i class="fa fa-plus me-1"></i>Add internship</a><a class="btn btn-outline-primary" href="manage-internships.php">Manage internships</a><a class="btn btn-outline-primary" href="applications.php">View applications</a></div>
+<?php include __DIR__.'/../includes/footer.php'; ?>

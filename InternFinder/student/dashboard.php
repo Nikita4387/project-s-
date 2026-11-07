@@ -1,0 +1,11 @@
+<?php
+require_once __DIR__.'/../includes/functions.php';student_only();$pageTitle='Student dashboard';$sid=(int)$_SESSION['student_id'];
+$stats=['available'=>$pdo->query("SELECT COUNT(*) FROM internships WHERE ".active_internship_sql())->fetchColumn()];
+$s=$pdo->prepare("SELECT COUNT(*) total,SUM(status='Pending') pending,SUM(status='Accepted') accepted FROM applications WHERE student_id=?");$s->execute([$sid]);$a=$s->fetch();
+$recent=$pdo->prepare("SELECT a.*,i.title,i.company FROM applications a JOIN internships i ON i.id=a.internship_id WHERE a.student_id=? ORDER BY a.applied_at DESC LIMIT 5");$recent->execute([$sid]);
+$latest=$pdo->query("SELECT * FROM internships WHERE ".active_internship_sql()." ORDER BY created_at DESC LIMIT 3")->fetchAll();include __DIR__.'/../includes/header.php'; ?>
+<h1 class="page-title">Welcome, <?= e($_SESSION['student_name']) ?>!</h1><p class="text-muted">Here is your internship activity at a glance.</p>
+<div class="row g-3 mb-4"><?php foreach([['Available internships',$stats['available'],'fa-briefcase'],['Applications submitted',$a['total']??0,'fa-file-lines'],['Pending applications',$a['pending']??0,'fa-hourglass-half'],['Accepted applications',$a['accepted']??0,'fa-circle-check']] as $v): ?><div class="col-6 col-lg-3"><div class="stat-card"><i class="fa <?= e($v[2]) ?>"></i><strong><?= (int)$v[1] ?></strong><span><?= e($v[0]) ?></span></div></div><?php endforeach; ?></div>
+<div class="section-heading"><h2>Recently added</h2><a href="/InternFinder/internships.php">Browse all</a></div><div class="row g-3"><?php foreach($latest as $i): ?><div class="col-md-4"><?php include __DIR__.'/../includes/internship-card.php'; ?></div><?php endforeach; ?></div>
+<h2 class="mt-5">Your recent applications</h2><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Internship</th><th>Company</th><th>Applied on</th><th>Status</th></tr></thead><tbody><?php foreach($recent as $r): ?><tr><td><?= e($r['title']) ?></td><td><?= e($r['company']) ?></td><td><?= e(date('d M Y',strtotime($r['applied_at']))) ?></td><td><span class="status"><?= e($r['status']) ?></span></td></tr><?php endforeach; ?></tbody></table></div><a class="btn btn-outline-primary" href="my-applications.php">View all applications</a>
+<?php include __DIR__.'/../includes/footer.php'; ?>

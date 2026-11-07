@@ -1,0 +1,2 @@
+<?php
+require_once __DIR__.'/../includes/functions.php';admin_only();if($_SERVER['REQUEST_METHOD']!=='POST'){http_response_code(405);exit('Method not allowed');}csrf_check();$id=filter_input(INPUT_POST,'id',FILTER_VALIDATE_INT);if($id){$s=$pdo->prepare("UPDATE internships SET is_open=0 WHERE id=?");$s->execute([$id]);flash('success','Internship closed. Existing applications were retained.');}redirect('manage-internships.php');
